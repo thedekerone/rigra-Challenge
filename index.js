@@ -26,8 +26,8 @@ app.use(
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-	res.send(resolve(__dirname, 'public', 'index.html'));
+app.get('*', (req, res) => {
+	res.sendFile(resolve(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 8000;
