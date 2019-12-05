@@ -1,6 +1,9 @@
 {
 	"development": {
-		"use_env_variabl”": "JAWSDB_URL",
+		"username": "root",
+		"password": "internetes",
+		"database": "cart",
+		"host": "127.0.0.1",
 		"dialect": "mysql"
 	},
 	"test": {
