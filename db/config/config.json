@@ -2,7 +2,7 @@
 	"development": {
 		"username": "root",
 		"password": "internetes",
-		"database": "cart",
+		"database": "yakdd3tuwv5qtzcp",
 		"host": "127.0.0.1",
 		"dialect": "mysql"
 	},
@@ -14,6 +14,10 @@
 		"dialect": "mysql"
 	},
 	"production": {
+		"username": "b1sl6wn4sic4fgg3",
+		"password": "vdsrbirnmws4v3v2",
+		"database": "yakdd3tuwv5qtzcp",
+		"host": "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
 		"use_env_variabl”": "JAWSDB_URL",
 		"dialect": "mysql"
 	}
