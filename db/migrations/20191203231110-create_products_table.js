@@ -22,6 +22,7 @@ module.exports = {
 				type      : Sequelize.STRING(),
 				allowNull : false
 			},
+			quantity  : Sequelize.INTEGER(11),
 			createdAt : Sequelize.DATE,
 			updatedAt : Sequelize.DATE
 		});

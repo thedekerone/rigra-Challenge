@@ -15,4 +15,26 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 16px;
         line-height: 24px; 
     }
+    input[type=number] {
+  -moz-appearance:textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}input:focus {
+   outline:none;
+}
+::-webkit-input-placeholder { /* Edge */
+  color: rgba(255,255,255,.4);
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgba(255,255,255,.4);
+}
+
+::placeholder {
+  color: rgba(255,255,255,.4);
+}
+
  `;
