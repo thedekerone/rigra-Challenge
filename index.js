@@ -3,7 +3,7 @@ const resolvers = require('./api/resolvers');
 const { join, resolve } = require('path');
 const { readFileSync } = require('fs');
 const graphqlHTTP = require('express-graphql');
-
+const cors = require('cors');
 const express = require('express');
 
 // Graph variables
@@ -16,6 +16,8 @@ const executableSchema = makeExecutableSchema({
 
 const app = express();
 
+app.use(cors());
+
 app.use(
 	'/api',
 	graphqlHTTP({
@@ -26,7 +28,7 @@ app.use(
 
 app.use(express.static('public'));
 
-app.get('*', (req, res) => {
+app.get('/test', (req, res) => {
 	res.sendFile(resolve(__dirname, 'public', 'index.html'));
 });
 
