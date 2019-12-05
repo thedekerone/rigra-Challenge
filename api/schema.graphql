@@ -1,0 +1,35 @@
+type Product {
+	title: String
+	id: Int
+	price: Float
+	img: String
+}
+
+type CartItem {
+	id: Int
+	productId: Int
+	quantity: Int
+}
+
+type Query {
+	getProducts: [Product]
+	getCartItems: [CartItem]
+}
+
+type Mutation {
+	createProduct(input: ProductInput): Product
+	createCartItem(input: CartInput): CartItem
+}
+
+# inputs
+
+input CartInput {
+	productId: Int
+	quantity: Int
+}
+
+input ProductInput {
+	title: String!
+	price: Float!
+	img: String!
+}
