@@ -1,9 +1,9 @@
 import React from 'react';
-import { SearchInput } from './components/SearchInput';
-import { ProductList } from './components/ProductList';
-import { Cart, Search, Products, Price, Shipping, Img, Button } from './styles';
-import { Ticket } from './components/Ticket';
-import truckIcon from './utils/icons/truck.svg';
+import { SearchInput } from '../components/SearchInput';
+import { ProductList } from '../components/ProductList';
+import { Cart, Search, Products, Price, Shipping, Img, Button } from '../styles';
+import { Ticket } from '../components/Ticket';
+import truckIcon from '../utils/icons/truck.svg';
 
 function App() {
 	return (
