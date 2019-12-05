@@ -10,7 +10,7 @@ ReactDOM.render(
 	<React.Fragment>
 		<GlobalStyles />
 		<Router>
-			<App path='/files' />
+			<App path='/' />
 		</Router>
 	</React.Fragment>,
 	document.getElementById('root')
