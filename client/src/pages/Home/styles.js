@@ -31,20 +31,6 @@ export const Shipping = styled.div`
 `;
 export const Img = styled.img`margin-right: .75rem;`;
 
-export const Button = styled.a`
-	border: 1px solid #ddd;
-	display: block;
-	text-decoration: none !important;
-
-	background: ${(props) => (props.active ? '#FF8000' : '#f7f7f9')};
-	width: 100%;
-	border-radius: 4px;
-	padding: 0.8125rem;
-	margin-top: 1rem;
-	text-align: center;
-	color: ${(props) => (props.active ? 'white' : '#c1c1c1')};
-`;
-
 export const Input = styled.input`
 	background: #ffffff;
 	padding: 12px 16px;

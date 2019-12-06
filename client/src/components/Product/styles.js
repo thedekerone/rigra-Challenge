@@ -95,3 +95,7 @@ export const Quantity = styled.input`
 	height: 100%;
 	text-align: center;
 `;
+
+export const Delete = styled.span`cursor: pointer;`;
+
+export const QuantityManipulation = styled.div`opacity: 1 !important;`;

@@ -27,3 +27,13 @@ export const Total = styled(Item)`
         color: red;
     }
 `;
+export const Button = styled.div`
+	border: 1px solid #ddd;
+	background: ${(props) => (props.active ? '#FF8000' : '#f7f7f9')};
+	width: 100%;
+	border-radius: 4px;
+	padding: 0.8125rem;
+	margin-top: 1rem;
+	text-align: center;
+	color: ${(props) => (props.active ? 'white' : '#c1c1c1')};
+`;

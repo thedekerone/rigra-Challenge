@@ -3,9 +3,8 @@ import { Product } from '../Product';
 import { Empty } from '../Empty';
 import { Container, ContainerCart, Title, Text, List } from './styles';
 
-export function ProductList({ data, client, setSearchBy, setSearching }) {
-	console.log(data);
-	if (data.length === 0) {
+export function ProductList({ data, client, setSearchBy, searchBy }) {
+	if (data.length === 0 && searchBy.length === 0) {
 		return (
 			<ContainerCart>
 				<Empty />
@@ -23,7 +22,6 @@ export function ProductList({ data, client, setSearchBy, setSearching }) {
 							quantity={e.quantity}
 							client={client}
 							img={e.img}
-							setSearching={setSearching}
 							setSearchBy={setSearchBy}
 							title={e.title}
 							id={e.id}

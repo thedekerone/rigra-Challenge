@@ -18,7 +18,7 @@ export const Text = styled.span`
 	margin: 1rem 0;
 `;
 
-export const Anchor = styled.a`
+export const Anchor = styled.div`
 	color: blue;
 	text-decoration: none;
 `;
