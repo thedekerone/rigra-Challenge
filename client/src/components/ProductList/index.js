@@ -1,39 +1,37 @@
 import React from 'react';
 import { Product } from '../Product';
+import { Empty } from '../Empty';
+import { Container, ContainerCart, Title, Text, List } from './styles';
 
-export function ProductList() {
-	const items = [
-		{
-			img   : 'http://laive.pe/wp-content/uploads/2015/11/Yogurt-Laive-Sin-Lactosa-Fresa-1kg.png',
-			title : 'Yogurt Laive',
-			price : '23.00'
-		},
-		{
-			img   : 'http://laive.pe/wp-content/uploads/2015/11/Yogurt-Laive-Sin-Lactosa-Fresa-1kg.png',
-			title : 'Yogurt Laive',
-			price : '23.00'
-		},
-		{
-			img   : 'http://laive.pe/wp-content/uploads/2015/11/Yogurt-Laive-Sin-Lactosa-Fresa-1kg.png',
-			title : 'Yogurt Laive',
-			price : '23.00'
-		},
-		{
-			img   : 'http://laive.pe/wp-content/uploads/2015/11/Yogurt-Laive-Sin-Lactosa-Fresa-1kg.png',
-			title : 'Yogurt Laive',
-			price : '23.00'
-		}
-	];
-
+export function ProductList({ data, client, setSearchBy, setSearching }) {
+	console.log(data);
+	if (data.length === 0) {
+		return (
+			<ContainerCart>
+				<Empty />
+				<Title>Your cart is empty</Title>
+				<Text>Seems like you haven't chosen what to buy</Text>
+			</ContainerCart>
+		);
+	}
 	return (
-		<ul>
-			{items.map((e) => {
+		<Container>
+			{data.map((e) => {
 				return (
-					<li>
-						<Product img={e.img} title={e.title} price={e.price} />
-					</li>
+					<List key={e.id}>
+						<Product
+							quantity={e.quantity}
+							client={client}
+							img={e.img}
+							setSearching={setSearching}
+							setSearchBy={setSearchBy}
+							title={e.title}
+							id={e.id}
+							price={e.price}
+						/>
+					</List>
 				);
 			})}
-		</ul>
+		</Container>
 	);
 }

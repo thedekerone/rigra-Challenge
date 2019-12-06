@@ -36,5 +36,8 @@ input::-webkit-inner-spin-button {
 ::placeholder {
   color: rgba(255,255,255,.4);
 }
+a{
+  text-decoration:none
+}
 
  `;

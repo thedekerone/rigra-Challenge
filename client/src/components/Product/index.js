@@ -13,28 +13,35 @@ import {
 } from './styles';
 import plus from '../../utils/icons/plus.svg';
 import minus from '../../utils/icons/minus.svg';
+import { useMutation, useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
-export function Product({
-	img = 'http://laive.pe/wp-content/uploads/2015/11/Yogurt-Laive-Sin-Lactosa-Fresa-1kg.png',
-	title = 'Yogurt Laive',
-	price = '23.00'
-}) {
-	const addItem = useRef(null);
-	const addQuantity = useRef(null);
+const CHANGE_QUANTITY = gql`
+	mutation($productId: Int!, $quantity: Int!) {
+		changeQuantity(productId: $productId, quantity: $quantity) {
+			id
+			quantity
+			title
+		}
+	}
+`;
+
+export function Product({ img, title, price, quantity, id, client, setSearchBy, setSearching }) {
 	const [
 		open,
 		setOpen
 	] = useState(false);
-	useEffect(() => {
-		window.addEventListener('click', (e) => {
-			if (e.target === addItem.current || e.target === addQuantity.current || e.path[1] === addQuantity.current) {
-				setOpen(true);
-			} else {
-				setOpen(false);
-			}
-		});
-	}, []);
-	const handleBlur = () => {};
+
+	const [
+		quantityValue,
+		setQuantityValue
+	] = useState(quantity);
+
+	const [
+		changeQuantity,
+		{ loading, data }
+	] = useMutation(CHANGE_QUANTITY);
+
 	return (
 		<Container open={open}>
 			<ImgContainer>
@@ -42,16 +49,57 @@ export function Product({
 			</ImgContainer>
 			<DetailContainer>
 				<Title>{title}</Title>
-				<Price>${price}</Price>
+				<Price>${price.toFixed(2)}</Price>
 			</DetailContainer>
-			<AddItem ref={addItem}>+</AddItem>
-			{open && (
-				<ItemQuantity ref={addQuantity}>
-					<Sign src={minus} alt='' />
-					<Quantity defaultValue={1} type='number' placeholder='100' />
-					<Sign src={plus} alt='' />
-				</ItemQuantity>
-			)}
+			<AddItem
+				onFocus={() => {
+					setOpen(true);
+				}}
+				onBlur={() => {
+					console.log(typeof client.resetStore);
+					setOpen(false);
+
+					changeQuantity({ variables: { productId: id, quantity: quantityValue } }).then(() => {
+						setSearchBy('');
+						setSearching(false);
+						client.resetStore();
+					});
+				}}>
+				{!open ? quantityValue === 0 ? (
+					'+'
+				) : (
+					quantityValue
+				) : (
+					<ItemQuantity>
+						<Sign
+							src={minus}
+							alt=''
+							onClick={() => {
+								if (quantityValue > 0) {
+									setQuantityValue(quantityValue - 1);
+								}
+							}}
+						/>
+
+						<Quantity
+							value={quantityValue}
+							onChange={(e) => {
+								setQuantityValue(e.target.value);
+							}}
+							minValue='0'
+							type='number'
+							placeholder='100'
+						/>
+						<Sign
+							src={plus}
+							alt=''
+							onClick={() => {
+								setQuantityValue(quantityValue + 1);
+							}}
+						/>
+					</ItemQuantity>
+				)}
+			</AddItem>
 		</Container>
 	);
 }

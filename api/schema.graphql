@@ -3,14 +3,19 @@ type Product {
 	id: Int
 	price: Float
 	img: String
+	quantity: Int
 }
 
 type Query {
+	#get products that are not in cart
 	getProducts: [Product]
+	#products with 1 or more quantity
+	getProductsInCart: [Product]
 }
 
 type Mutation {
 	createProduct(input: ProductInput): Product
+	changeQuantity(productId: Int!, quantity: Int!): Product
 }
 
 # inputs
