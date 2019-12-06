@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { makeExecutableSchema } = require('graphql-tools');
 const resolvers = require('./api/resolvers');
 const { readFileSync } = require('fs');
@@ -8,7 +10,6 @@ const express = require('express');
 
 // Graph variables
 const typeDefs = readFileSync(path.join(__dirname, 'api', 'schema.graphql'), 'utf-8');
-
 const executableSchema = makeExecutableSchema({
 	typeDefs,
 	resolvers
